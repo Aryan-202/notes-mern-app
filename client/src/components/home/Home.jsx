@@ -10,10 +10,10 @@ const Home = () => {
   return (
     <div>
         
-        <button onClick={navigate('/login')}>
+        <button onClick={()=>navigate('/login')}>
             login
         </button>
-        <button onClick={navigate('/register')}>
+        <button onClick={()=>navigate('/register')}>
             register
         </button>
 
