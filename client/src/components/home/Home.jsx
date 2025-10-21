@@ -1,14 +1,13 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import Login from '../auth/login/Login'
-import Register from '../auth/register/Register'
+import style from './home.module.css'
 
 const Home = () => {
 
     const navigate = useNavigate()
 
   return (
-    <div>
+    <div className='centre-container'>
         
         <button onClick={()=>navigate('/login')}>
             login
