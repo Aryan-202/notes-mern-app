@@ -1,4 +1,5 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose from 'mongoose';
+import notesModel from './notes.model.js';
 
 const userSchema = new mongoose.Schema({
     name:{
@@ -12,9 +13,15 @@ const userSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true
-    }
+    },
+    notes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Note'
+        }
+    ]
 }, {timestamps:true})
 
-const userModel = mongoose.model.user || mongoose.model("User", userSchema);
+const User = mongoose.model.User || mongoose.model("User", userSchema);
 
-export default userModel;
+export default User;
