@@ -1,0 +1,13 @@
+.centre{
+    justify-content: center;
+    display: flex;
+    gap: 20px;
+    padding-top: 200px;
+}
+
+.button{
+    justify-content: center;
+    display: flex;
+    margin-top: 20px;
+    margin-left: 600px;
+}

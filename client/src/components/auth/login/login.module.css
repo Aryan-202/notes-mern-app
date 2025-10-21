@@ -1,0 +1,7 @@
+.centre{
+    justify-content: center;
+    display: flex;
+    gap: 20px;
+    padding-top: 200px;
+}
+
