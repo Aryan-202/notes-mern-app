@@ -7,7 +7,7 @@ const Home = () => {
     const navigate = useNavigate()
 
   return (
-    <div className='centre-container'>
+    <div className={style.centreContainer}>
         
         <button onClick={()=>navigate('/login')}>
             login
