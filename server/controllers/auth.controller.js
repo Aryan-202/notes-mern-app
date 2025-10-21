@@ -1,5 +1,7 @@
 import userModel from "../models/user.model.js";
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import appconfig from "../dotenv.js";
 
 
 
@@ -73,9 +75,24 @@ export const login = async  (req, res)=>{
             });
         }
 
+
+        const token = jwt.sign(
+            {userId: user._id, email: user.email},
+            appconfig.JWT_SECRET,
+            {expiresIn: '24h'}
+        )
+
+
+
+
         res.status(200).json({
             success: true,
-            message: 'logged in successfully'
+            message: 'logged in successfully',
+            token,
+            user: {
+                id: user._id,
+                email: user.email,
+            }
         })
 
     } catch (error) {

@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) =>{
             const data = await response.json()
 
             if(response.ok){
-                setUser({email})
+                setUser({email: data.user.email})
                 if(data.token){
                     localStorage.setItem('token', data.token);
                 }
@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) =>{
         }
     }
     return (
-        <AuthContext.Provider value={login}>
+        <AuthContext.Provider value={{login, user, loading}}>
             {children}
         </AuthContext.Provider>
     )

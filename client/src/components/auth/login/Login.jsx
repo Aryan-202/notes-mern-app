@@ -13,7 +13,7 @@ const Login = () => {
   
   const [error, setError] = useState('');
 
-  const {login ,loading} = useAuth()
+  const {login,loading} = useAuth()
   const navigate = useNavigate()
 
   const handleChange =(e)=>{
@@ -51,7 +51,7 @@ const Login = () => {
         <label htmlFor="password">password</label>
         <input type="password" name="password" id="password" value={formData.password} onChange={handleChange} required />
       </form>
-      <button type="submit" onClick={handleSubmit}>
+      <button type="submit" disabled={loading}>
         {loading? 'logging in....': 'login'}
       </button>
     </div>
