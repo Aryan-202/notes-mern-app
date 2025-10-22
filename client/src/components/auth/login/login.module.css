@@ -5,90 +5,275 @@
     justify-content: center;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated background elements */
+.container::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: shimmer 8s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .formContainer {
-    background: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
     width: 100%;
-    max-width: 400px;
+    max-width: 440px;
+    position: relative;
+    z-index: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.formContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.3);
 }
 
 .formContainer h2 {
     text-align: center;
-    margin-bottom: 30px;
-    color: #333;
-    font-size: 28px;
+    margin-bottom: 40px;
+    color: #2d3748;
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.formContainer h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 2px;
 }
 
 .formGroup {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    position: relative;
 }
 
 .formGroup label {
     display: block;
-    margin-bottom: 5px;
-    color: #555;
-    font-weight: 500;
+    margin-bottom: 8px;
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .formGroup input {
     width: 100%;
-    padding: 12px;
-    border: 2px solid #e1e5e9;
-    border-radius: 5px;
+    padding: 16px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
     font-size: 16px;
-    transition: border-color 0.3s;
+    transition: all 0.3s ease;
+    background: #f8fafc;
+    color: #2d3748;
+    font-weight: 500;
+}
+
+.formGroup input::placeholder {
+    color: #a0aec0;
+    font-weight: 400;
 }
 
 .formGroup input:focus {
     outline: none;
     border-color: #667eea;
+    background: white;
+    box-shadow: 
+        0 0 0 3px rgba(102, 126, 234, 0.1),
+        0 4px 12px rgba(102, 126, 234, 0.1);
+    transform: translateY(-1px);
+}
+
+.formGroup input:hover {
+    border-color: #cbd5e0;
+    background: white;
 }
 
 .submitButton {
     width: 100%;
-    padding: 12px;
+    padding: 16px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 12px;
     font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+.submitButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.submitButton:hover::before {
+    left: 100%;
 }
 
 .submitButton:hover:not(:disabled) {
     transform: translateY(-2px);
+    box-shadow: 
+        0 8px 20px rgba(102, 126, 234, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.submitButton:active:not(:disabled) {
+    transform: translateY(0);
 }
 
 .submitButton:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+    transform: none;
 }
 
 .error {
-    background: #fee;
-    color: #c33;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    border: 1px solid #fcc;
+    background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+    color: #c53030;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 1px solid #fc8181;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+    padding-left: 50px;
+    animation: shake 0.5s ease-in-out;
+}
+
+.error::before {
+    content: '!';
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: #c53030;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
 }
 
 .registerLink {
     text-align: center;
-    margin-top: 20px;
-    color: #666;
+    margin-top: 30px;
+    color: #718096;
+    font-size: 15px;
 }
 
 .registerLink a {
     color: #667eea;
     text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.registerLink a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: width 0.3s ease;
 }
 
 .registerLink a:hover {
-    text-decoration: underline;
+    color: #764ba2;
+}
+
+.registerLink a:hover::after {
+    width: 100%;
+}
+
+/* Loading animation */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.submitButton:disabled {
+    animation: pulse 1.5s infinite;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .formContainer {
+        padding: 40px 25px;
+        margin: 10px;
+    }
+    
+    .formContainer h2 {
+        font-size: 28px;
+    }
+    
+    .formGroup input {
+        padding: 14px 16px;
+    }
+}
+
+/* Focus states for accessibility */
+.formGroup input:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+.submitButton:focus-visible {
+    outline: 2px solid #2d3748;
+    outline-offset: 2px;
 }
