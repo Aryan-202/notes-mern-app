@@ -174,11 +174,12 @@ notes-mern-app/
 
 ### Backend Deployment (Render/Railway)
 
-bash
+```bash
 
 # Build and deploy from server directory
 # Ensure environment variables are set in your hosting platform
 
+```
 ### Frontend Deployment (Vercel/Netlify)
 
 ```bash
